@@ -1,15 +1,11 @@
 import type { Metadata } from 'next';
-import { GeistSans } from 'geist/font/sans'; // Corrected import from geist/font/sans
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { AppShell } from '@/components/layout/app-shell';
 
-const geistSans = GeistSans({
-  variable: '--font-geist-sans',
-  // subsets: ['latin'], // Removed subsets as it's not standard for geist/font/sans
-});
-
-// Removed Geist_Mono as it's not explicitly requested and GeistSans is primary
+// GeistSans from 'geist/font/sans' is an object, not a function.
+// Its .variable property (e.g., '--font-geist-sans') can be used directly.
 
 export const metadata: Metadata = {
   title: 'MediaFlow',
@@ -23,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} antialiased`}>
+      <body className={`${GeistSans.variable} antialiased`}>
         <AppShell>
           {children}
         </AppShell>
